@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Correos Masivos</title>
+</head>
+<body>
+    <h1> Enviar Correos Masivos</h1>
+    <form action="/send" method="POST">
+        <div>
+            <label for="subject">Asunto: </label>
+            <input type="text" name="subject" id="subject" required>
+        </div>
+        <div>
+            <label for="message">Mensaje:</label>
+            <textarea name="message" id="message" required></textarea>
+        </div>
+        <div>
+            <label for="emails">Destinatarios: </label>
+            <select name="emails[]" id="emails" multiple required>
+                <% emails.forEach(email => { %> 
+                    <option value="<%= email.email %>"><%= email.email %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>
